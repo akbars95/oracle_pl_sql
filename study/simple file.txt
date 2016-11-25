@@ -9,3 +9,4 @@ clear - for clear cmd window
 git reset . - Unstaged files
 git diff - view differences
 git diff --staged - view differences files, which in the stage area
+git rm third.txt - delete specific file
