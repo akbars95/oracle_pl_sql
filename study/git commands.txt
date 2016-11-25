@@ -11,4 +11,4 @@ git diff - view differences
 git diff --staged - view differences files, which in the stage area
 git rm third.txt - delete specific file
 git mv description.txt descr/description.txt - moved file
-git help commit - help commit
+git help commit - help commit(open in ther browser)
