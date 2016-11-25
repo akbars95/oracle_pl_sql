@@ -1,3 +1,5 @@
+git config --list - list configurations
+
 git init - init project
 git add . - add all files(to staged)
 git add second.txt - specific file name add(to staged)
@@ -23,3 +25,6 @@ git push -u origin(remote name) study(branch name)
 
 
 ssh-keygen -t rsa - generate private/public rsa key pair(c:/users/<username>/.ssh folder)
+
+git clone zat@EN32211 MINGW64 /d/work/github
+$ git clone https://github.com/akbars95/oracle_pl_sql.git - clone via http(s)
