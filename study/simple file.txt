@@ -1,8 +1,10 @@
 git init - init project
-git add . - add all files
-git add second.txt - specific file name add
+git add . - add all files(to staged)
+git add second.txt - specific file name add(to staged)
 git commit -m "Here commit message" - git commit with message
 git log - view commit logs
 git log --author="akbars95" - view commits specific author
 git status - view status files
 clear - for clear cmd window
+git reset . - Unstaged files
+git diff - view differences
