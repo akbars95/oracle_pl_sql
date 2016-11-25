@@ -11,3 +11,4 @@
 8)test connection - ssh -T git@github.com, response - (Hi akbars95! You've successfully authenticated, but GitHub does not provide shell access.)
 9)go to where init new project - cd work/github/oracle_pl_sql
 10)cloning project - git clone git@github.com:akbars95/oracle_pl_sql.git
+11)add remote name - git remote add origin git@github.com:akbars95/oracle_pl_sql.git
