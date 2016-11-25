@@ -1,2 +1,2 @@
-second file
-change
+if modified file and add to the stage, command git diff nothing show
+you need add 

@@ -8,3 +8,4 @@ git status - view status files
 clear - for clear cmd window
 git reset . - Unstaged files
 git diff - view differences
+git diff --staged - view differences files, which in the stage area
