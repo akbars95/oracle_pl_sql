@@ -14,3 +14,9 @@ git mv description.txt descr/description.txt - moved file
 git help commit - help commit(open in ther browser)
 git commit -am"Message" - at once committed without git add command
 git checkout -- "git commands.txt" - to discard changes in working directory
+
+REMOTE
+git remote add origin(remote name) https://github.com/akbars95/oracle_pl_sql.git(link to repository)
+
+git remote - get remote name
+git push -u origin(remote name) study(branch name)
