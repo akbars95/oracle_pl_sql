@@ -1,1 +1,8 @@
-This is study text file.
+git init - init project
+git add . - add all files
+git add second.txt - specific file name add
+git commit -m "Here commit message" - git commit with message
+git log - view commit logs
+git log --author="akbars95" - view commits specific author
+git status - view status files
+clear - for clear cmd window
