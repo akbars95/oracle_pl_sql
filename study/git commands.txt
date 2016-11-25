@@ -28,3 +28,5 @@ ssh-keygen -t rsa - generate private/public rsa key pair(c:/users/<username>/.ss
 
 git clone zat@EN32211 MINGW64 /d/work/github
 $ git clone https://github.com/akbars95/oracle_pl_sql.git - clone via http(s)
+
+git fetch --all - fetch all
