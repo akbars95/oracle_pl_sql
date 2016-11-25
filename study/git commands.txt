@@ -13,3 +13,4 @@ git rm third.txt - delete specific file
 git mv description.txt descr/description.txt - moved file
 git help commit - help commit(open in ther browser)
 git commit -am"Message" - at once committed without git add command
+git checkout -- "git commands.txt" - to discard changes in working directory
