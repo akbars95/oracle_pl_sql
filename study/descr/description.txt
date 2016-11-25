@@ -6,3 +6,5 @@ git status
 git add "git commands.txt" - this is file new name
 git rm "simple file.txt" - remove old file name
 git status - should will show, that you renamed file, further you can to make commit
+
+git reset HEAD file name
