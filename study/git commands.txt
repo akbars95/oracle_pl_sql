@@ -1,3 +1,6 @@
+pwd - current path
+git help - for helping
+
 git config --list - list configurations
 
 git init - init project
@@ -15,7 +18,7 @@ git rm third.txt - delete specific file
 git mv description.txt descr/description.txt - moved file
 git help commit - help commit(open in ther browser)
 git commit -am"Message" - at once committed without git add command
-git checkout -- "git commands.txt" - to discard changes in working directory
+git checkout -- "git commands.txt"(git checkout -- <target>) - to discard changes in working directory
 
 REMOTE
 git remote add origin(remote name) https://github.com/akbars95/oracle_pl_sql.git(link to repository)
@@ -30,3 +33,11 @@ git clone zat@EN32211 MINGW64 /d/work/github
 $ git clone https://github.com/akbars95/oracle_pl_sql.git - clone via http(s)
 
 git fetch --all - fetch all
+git pull origin master - pull remote changes from other people of your command
+
+BRANCH
+git branch <name_new_branch> - create new branch
+git branch - show all branches
+git checkout <branch_name> - switch branch
+git merge <branch_name> - merge current branch to <branch_name>
+git branch -d <branch_name> - delete <branch_name>
