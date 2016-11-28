@@ -36,6 +36,8 @@ $ git clone https://github.com/akbars95/oracle_pl_sql.git - clone via http(s)
 git fetch --all - fetch all
 git pull origin master - pull remote changes from other people of your command
 git push -f <remote> <branch> - force push
+git push -u origin <remote> <branch> --force - force push
+git show <commit_hash> - show commit inside
 
 BRANCH
 git branch <name_new_branch> - create new branch
