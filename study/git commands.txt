@@ -18,6 +18,7 @@ git rm third.txt - delete specific file
 git mv description.txt descr/description.txt - moved file
 git help commit - help commit(open in ther browser)
 git commit -am"Message" - at once committed without git add command
+git commit --amend -m 'Message' - amend commit
 git checkout -- "git commands.txt"(git checkout -- <target>) - to discard changes in working directory
 
 REMOTE
@@ -34,6 +35,7 @@ $ git clone https://github.com/akbars95/oracle_pl_sql.git - clone via http(s)
 
 git fetch --all - fetch all
 git pull origin master - pull remote changes from other people of your command
+git push -f <remote> <branch> - force push
 
 BRANCH
 git branch <name_new_branch> - create new branch
