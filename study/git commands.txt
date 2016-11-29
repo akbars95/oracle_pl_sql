@@ -53,3 +53,10 @@ STASH
 git stash - add your changes to the stash
 git stash list - see stash
 git stash pop - delete from stash and move data to the unstaged
+
+git branch -a - show all branches
+
+RESET
+git reset --soft e14b9cf4dcc90b8bf2f01335012cbb1b574d0085(commit hash)
+git reset --mixed e14b9cf4dcc90b8bf2f01335012cbb1b574d0085(commit hash)
+git reset --hard e14b9cf4dcc90b8bf2f01335012cbb1b574d0085(commit hash)
