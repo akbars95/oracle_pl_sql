@@ -71,3 +71,6 @@ git tag -d <tagName> - delete <tagName> locally
 git push origin :<tagName>  - delete remote tag
 
 PATCH
+git format-patch -1(commit number) - last commit create patch
+git apply <patch_file_path> - apply patch without creating commit
+git am <patch_file_path> - apply patch with creating commit
