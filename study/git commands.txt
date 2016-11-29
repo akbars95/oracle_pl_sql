@@ -47,7 +47,11 @@ git branch <name_new_branch> - create new branch
 git branch - show all branches
 git checkout <branch_name> - switch branch
 git merge <branch_name> - merge current branch to <branch_name>
-git branch -d <branch_name> - delete <branch_name>
+git branch -D <branch_name> - delete <branch_name>
+git checkout -b <branch_name> - create and checkout to the new branch <branch_name>
+git branch -m <old_branch_name> <new_branch_name> - rename branch
+git merge <branch_name> - megde current branch with <branch_name>
+git rebase <rebase_branch_name> - rebase current branch to the <rebase_branch_name>
 
 STASH
 git stash - add your changes to the stash
@@ -74,3 +78,4 @@ PATCH
 git format-patch -1(commit number) - last commit create patch
 git apply <patch_file_path> - apply patch without creating commit
 git am <patch_file_path> - apply patch with creating commit
+
