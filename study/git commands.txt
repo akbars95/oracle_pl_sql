@@ -60,3 +60,12 @@ RESET
 git reset --soft e14b9cf4dcc90b8bf2f01335012cbb1b574d0085(commit hash)
 git reset --mixed e14b9cf4dcc90b8bf2f01335012cbb1b574d0085(commit hash)
 git reset --hard e14b9cf4dcc90b8bf2f01335012cbb1b574d0085(commit hash)
+
+TAG
+git tag -a '<tagName>' -m '<Message>' - crate local tag
+git push origin tag <tagName> - pushed tag to the remote
+git tag -l - view list tags
+git show <tagName> - show info about tag
+git tag - show all tags
+git tag -d <tagName> - delete <tagName> locally
+git push origin :<tagName>  - delete remote tag
