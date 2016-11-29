@@ -69,3 +69,5 @@ git show <tagName> - show info about tag
 git tag - show all tags
 git tag -d <tagName> - delete <tagName> locally
 git push origin :<tagName>  - delete remote tag
+
+PATCH
