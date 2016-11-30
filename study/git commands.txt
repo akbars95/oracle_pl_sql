@@ -79,3 +79,5 @@ git format-patch -1(commit number) - last commit create patch
 git apply <patch_file_path> - apply patch without creating commit
 git am <patch_file_path> - apply patch with creating commit
 
+CHERRY-PICK
+git cherry-pick <commit_hash> - cherry pick, pick commits
