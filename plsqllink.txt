@@ -1,3 +1,0 @@
-http://oracleplsql.ru
-https://www.tutorialspoint.com/plsql/plsql_variable_types.htm
-https://www.techonthenet.com/oracle/index.php
