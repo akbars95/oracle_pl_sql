@@ -6,15 +6,19 @@ git config --list - list configurations
 git init - init project
 git add . - add all files(to staged)
 git add second.txt - specific file name add(to staged)
+git add --all - add all files and sub folders file
 git commit -m "Here commit message" - git commit with message
 git log - view commit logs
 git log --author="akbars95" - view commits specific author
 git log -1(commit number) = get latest commit numbers
+git log --all - show full history
+git log <branch_name> - show log branch_name
 git status - view status files
 clear - for clear cmd window
 git reset . - Unstaged files
 git diff - view differences
 git diff --staged - view differences files, which in the stage area
+git diff head~1 head - show differences between current commit and penultimate
 rm third.txt - delete specific file
 git mv description.txt descr/description.txt - moved file
 git help commit - help commit(open in ther browser)
@@ -22,8 +26,12 @@ git commit -am"Message" - at once committed without git add command
 git commit --amend -m 'Message' - amend commit
 git checkout -- "git commands.txt"(file name)(git checkout -- <target>) - to discard changes in working directory
 git checkout HEAD -- <filename> - discard filename
+git checkout <commit hash> - cehckout to commit hash
+git checkout [<branch_name> | head | <commit hash>]~<number_go_back>( git checkout master~1) - switched to one cmmit back from master branch name
 
 REMOTE
+git remote - show remote repository
+git remote show origin - remote info
 git remote add origin(remote name) https://github.com/akbars95/oracle_pl_sql.git(link to repository)
 
 git remote - get remote name
@@ -36,8 +44,10 @@ git clone zat@EN32211 MINGW64 /d/work/github
 $ git clone https://github.com/akbars95/oracle_pl_sql.git - clone via http(s)
 
 git fetch --all - fetch all
+git fetch origin <branch_name> - fetch branch_name
 git pull origin master - pull remote changes from other people of your command
 git pull - pull current branch changes
+git pull origin <branch_name> - pull branch_name
 git push -f <remote> <branch> - force push
 git push -u origin <remote> <branch> --force - force push
 git show <commit_hash> - show commit inside
@@ -53,6 +63,7 @@ git checkout -b <branch_name> - create and checkout to the new branch <branch_na
 git branch -m <old_branch_name> <new_branch_name> - rename branch
 git merge <branch_name> - megde current branch with <branch_name>
 git rebase <rebase_branch_name> - rebase current branch to the <rebase_branch_name>
+git branch -r - show deleted branches
 
 STASH
 git stash - add your changes to the stash
@@ -82,3 +93,10 @@ git am <patch_file_path> - apply patch with creating commit
 
 CHERRY-PICK
 git cherry-pick <commit_hash> - cherry pick, pick commits
+git cherry-pick <commit_hash> -n - cherry-pick, without commits
+
+ALLIAS
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
