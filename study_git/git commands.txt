@@ -76,6 +76,7 @@ RESET
 git reset --soft e14b9cf4dcc90b8bf2f01335012cbb1b574d0085(commit hash)
 git reset --mixed e14b9cf4dcc90b8bf2f01335012cbb1b574d0085(commit hash)
 git reset --hard e14b9cf4dcc90b8bf2f01335012cbb1b574d0085(commit hash)
+git reset --hard origin/<branch_name> - reset branch_name local with same anem to remote branch_name
 
 TAG
 git tag -a '<tagName>' -m '<Message>' - crate local tag
