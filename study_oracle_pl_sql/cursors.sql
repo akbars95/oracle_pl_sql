@@ -44,7 +44,12 @@ declare
   cursor getAll is
     select * from COUNTRIES;
     
+  cursor return_all_countries 
+  return COUNTRIES%rowtype is
+    select * from COUNTRIES;
+    
   country_rowtype getAll%rowtype;
+  country_row_type COUNTRIES%rowtype;
 begin
   dbms_output.put_line(FINDCOUNTRY('Moldova') || '');
   dbms_output.put_line(FINDCOUNTRY('moldova') || '');
@@ -60,4 +65,10 @@ begin
     ' _ ' || country_rowtype.COUNTRY_NAME);
   end loop;
   close getAll;
+  
+  dbms_output.put_line('/*/*/*/*/*/*/*/*/*///**/*/*/*/');
+  open return_all_countries;
+  fetch return_all_countries into country_row_type;
+  dbms_output.put_line(country_row_type.COUNTRY_ID || ' ' || country_row_type.COUNTRY_NAME);
+  close return_all_countries;
 end;
