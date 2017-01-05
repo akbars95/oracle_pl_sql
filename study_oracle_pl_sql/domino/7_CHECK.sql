@@ -1,3 +1,4 @@
+--------------------------------------------------------------------------------
 SET SERVEROUTPUT ON;
 DECLARE
 BEGIN
@@ -9,9 +10,9 @@ BEGIN
   
 END;
 
+--------------------------------------------------------------------------------
 SET SERVEROUTPUT ON;
 DECLARE
-  
   CUR_RANDOM_INTERATION INTEGER;
   DOMINO_COUNT INTEGER := PKG_DOMINOS_DOMINOS.GET_DOMINO_COUNT;
   
@@ -24,11 +25,9 @@ DECLARE
     RETURN CUR_RANDOM;
   END;
     
-  
-  
 BEGIN
   --SELECT SYS.DBMS_RANDOM.RANDOM FROM DUAL;
-  FOR I IN 1 .. 10
+  FOR I IN 1 .. 100
   LOOP
     CUR_RANDOM_INTERATION := GET_RANDOM;
     IF CUR_RANDOM_INTERATION >= 27 THEN
@@ -37,11 +36,11 @@ BEGIN
   END LOOP;
 END;  
 
+--------------------------------------------------------------------------------
 SET SERVEROUTPUT ON;
 DECLARE
   DOMINO T_DOMINOS%ROWTYPE;
 BEGIN
   DOMINO := PKG_DOMINOS_DOMINOS.GET_RANDOM_DOMINO;
   DBMS_OUTPUT.PUT_LINE(DOMINO.DOMINO_LEFT_PIECE || '|' || DOMINO.DOMINO_RIGHT_PIECE);
-  
 END;
