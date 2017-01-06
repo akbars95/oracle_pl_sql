@@ -2,6 +2,31 @@ DROP PACKAGE PKG_DOMINOS_USERS;
 DROP PACKAGE PKG_DOMINOS_ACCOUNTS;
 /
 
+--------------------------------------------------------------------------------------COMMON PACKAGE
+CREATE OR REPLACE PACKAGE PKG_COMMON AS
+  
+  --FUNCTIONS
+  FUNCTION GET_RANDOM_WITH_LIMIT(LIMIT_NUM_IN IN INTEGER)
+  RETURN INTEGER;
+  
+END PKG_COMMON;
+/
+
+CREATE OR REPLACE PACKAGE BODY PKG_COMMON AS
+  
+  --FUNCTIONS
+  FUNCTION GET_RANDOM_WITH_LIMIT(LIMIT_NUM_IN IN INTEGER)
+  RETURN INTEGER
+  IS
+    NUMBER_RANDOM INTEGER;
+  BEGIN
+    SELECT ROUND(SYS.DBMS_RANDOM.VALUE * LIMIT_NUM_IN) INTO NUMBER_RANDOM FROM DUAL;
+    RETURN NUMBER_RANDOM;
+  END GET_RANDOM_WITH_LIMIT;
+  
+END PKG_COMMON;
+/
+
 --------------------------------------------------------------------------------------DOMINOS PACKAGE
 CREATE OR REPLACE PACKAGE PKG_DOMINOS_DOMINOS AS
   
@@ -306,10 +331,98 @@ CREATE OR REPLACE PACKAGE BODY PKG_DOMINOS_GAME_USER_DOMINOS AS
                         IS_COMMIT_IN IN BOOLEAN DEFAULT TRUE)
   IS
     L_DOMINO_ID T_GAME_USER_DOMINOS.DOMINO_ID%TYPE;
+--    L_FLAG_EXISTS BOOLEAN := FALSE;
+    L_FLAG_FOUND BOOLEAN := FALSE;
+    REMAIN_DOMINO_COUNT NUMBER := 0;
+    LOOP_VAR NUMBER := 1;
   BEGIN
-    L_DOMINO_ID := PKG_DOMINOS_DOMINOS.GET_RANDOM_DOMINO_ID;
+  
+  --------------------------------------
+      
+  SELECT COUNT(*) INTO REMAIN_DOMINO_COUNT
+    FROM (SELECT MVD.DOMINO_ID AS COUNT_REMAIN_DOMINO
+                  FROM MV_DOMINOS MVD
+                  MINUS
+                  SELECT GUDOUT.DOMINO_ID
+                  FROM T_GAME_USER_DOMINOS GUDOUT
+                  WHERE GUDOUT.GAME_ATTENDEE_ID IN (
+                    SELECT OUTGA.GAME_ATTENDEE_ID
+                    FROM T_GAMES_ATTENDEES OUTGA
+                    WHERE OUTGA.GAME_ID = (
+                      select DISTINCT GA.GAME_ID
+                      from T_GAME_USER_DOMINOS GUD INNER JOIN T_GAMES_ATTENDEES GA ON GUD.GAME_ATTENDEE_ID = GA.GAME_ATTENDEE_ID 
+                      WHERE GA.GAME_ATTENDEE_ID = GAME_ATTENDEE_ID_IN
+                    )
+                  ) 
+                  )RESULT_TABLE;
+      
+      DBMS_OUTPUT.put_line('REMAIN_DOMINO_COUNT = ' || REMAIN_DOMINO_COUNT);
+      REMAIN_DOMINO_COUNT := PKG_COMMON.GET_RANDOM_WITH_LIMIT(REMAIN_DOMINO_COUNT);
+      DBMS_OUTPUT.put_line('--REMAIN_DOMINO_COUNT = ' || REMAIN_DOMINO_COUNT);
+      FOR CUR IN (SELECT MVD.DOMINO_ID
+                  FROM MV_DOMINOS MVD
+                  MINUS
+                  SELECT GUDOUT.DOMINO_ID
+                  FROM T_GAME_USER_DOMINOS GUDOUT
+                  WHERE GUDOUT.GAME_ATTENDEE_ID IN (
+                    SELECT OUTGA.GAME_ATTENDEE_ID
+                    FROM T_GAMES_ATTENDEES OUTGA
+                    WHERE OUTGA.GAME_ID = (
+                      select DISTINCT GA.GAME_ID
+                      from T_GAME_USER_DOMINOS GUD INNER JOIN T_GAMES_ATTENDEES GA ON GUD.GAME_ATTENDEE_ID = GA.GAME_ATTENDEE_ID 
+                      WHERE GA.GAME_ATTENDEE_ID = GAME_ATTENDEE_ID_IN
+                    )
+                  )
+      )
+      LOOP
+        --DBMS_OUTPUT.PUT_LINE('CUR.DOMINO_ID = ' || CUR.DOMINO_ID);
+        IF REMAIN_DOMINO_COUNT = 1 THEN
+          L_DOMINO_ID := CUR.DOMINO_ID;
+        END IF;
+        IF L_FLAG_FOUND = FALSE THEN
+          IF LOOP_VAR = REMAIN_DOMINO_COUNT THEN
+            L_FLAG_FOUND := TRUE;
+            L_DOMINO_ID := CUR.DOMINO_ID;
+          END IF;
+        END IF;
+        LOOP_VAR := LOOP_VAR + 1;
+      END LOOP;
     
+    DBMS_OUTPUT.PUT_LINE('L_DOMINO_ID = ' || L_DOMINO_ID);
     INSERT_GAME_USER_DOMINOS(GAME_ATTENDEE_ID_IN, L_DOMINO_ID);
+DBMS_OUTPUT.put_line('*************************');
+  
+-----------------------
+--    LOOP
+--      L_DOMINO_ID := PKG_DOMINOS_DOMINOS.GET_RANDOM_DOMINO_ID;
+--      
+--      FOR CUR IN (SELECT MVD.DOMINO_ID
+--                  FROM MV_DOMINOS MVD
+--                  MINUS
+--                  SELECT GUDOUT.DOMINO_ID
+--                  FROM T_GAME_USER_DOMINOS GUDOUT
+--                  WHERE GUDOUT.GAME_ATTENDEE_ID IN (
+--                    SELECT OUTGA.GAME_ATTENDEE_ID
+--                    FROM T_GAMES_ATTENDEES OUTGA
+--                    WHERE OUTGA.GAME_ID = (
+--                      select DISTINCT GA.GAME_ID
+--                      from T_GAME_USER_DOMINOS GUD INNER JOIN T_GAMES_ATTENDEES GA ON GUD.GAME_ATTENDEE_ID = GA.GAME_ATTENDEE_ID 
+--                      WHERE GA.GAME_ATTENDEE_ID = GAME_ATTENDEE_ID_IN
+--                    )
+--                  )
+--      )
+--      LOOP
+--        IF L_FLAG_EXISTS = FALSE THEN
+--          IF CUR.DOMINO_ID = L_DOMINO_ID THEN
+--            L_FLAG_EXISTS := TRUE;
+--          END IF;
+--        END IF;
+--      END LOOP;
+--    EXIT WHEN L_FLAG_EXISTS = TRUE;  
+--    END LOOP;
+--    
+--    DBMS_OUTPUT.PUT_LINE('L_DOMINO_ID = ' || L_DOMINO_ID);
+--    INSERT_GAME_USER_DOMINOS(GAME_ATTENDEE_ID_IN, L_DOMINO_ID);
   END INSERT_GAME_USER_DOMINOS;
   
   PROCEDURE DELETE_ALL_GAME_USER_DOMINOS
