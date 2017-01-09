@@ -39,19 +39,19 @@ BEGIN
     PKG_DOMINOS_GAME_USER_DOMINOS.INSERT_GAME_USER_DOMINOS(GAME_ATTENDEE_ID_IN => 
           PKG_DOMINOS_GAMES_ATTENDEES.GET_G_A_BY_G_NAME_AND_U_NAME(PKG_DOMINOS_GAMES.GET_GAME_BY_GAME_NAME(L_GAME_NAME), PKG_DOMINOS_USERS.GET_USER_BY_USER_EMAIL(L_USER1_IVANOV)));
   END LOOP;
-  DBMS_OUTPUT.PUT_LINE('--------------------------------------------------------------------------');
+  DBMS_OUTPUT.PUT_LINE('-------------------------1-------------------------------------------------');
   FOR I IN 1 .. 7
   LOOP
     PKG_DOMINOS_GAME_USER_DOMINOS.INSERT_GAME_USER_DOMINOS(GAME_ATTENDEE_ID_IN => 
           PKG_DOMINOS_GAMES_ATTENDEES.GET_G_A_BY_G_NAME_AND_U_NAME(PKG_DOMINOS_GAMES.GET_GAME_BY_GAME_NAME(L_GAME_NAME), PKG_DOMINOS_USERS.GET_USER_BY_USER_EMAIL(L_USER2_PETROV)));
   END LOOP;
-  DBMS_OUTPUT.PUT_LINE('--------------------------------------------------------------------------');
+  DBMS_OUTPUT.PUT_LINE('--------------------------2------------------------------------------------');
   FOR I IN 1 .. 7
   LOOP
     PKG_DOMINOS_GAME_USER_DOMINOS.INSERT_GAME_USER_DOMINOS(GAME_ATTENDEE_ID_IN => 
           PKG_DOMINOS_GAMES_ATTENDEES.GET_G_A_BY_G_NAME_AND_U_NAME(PKG_DOMINOS_GAMES.GET_GAME_BY_GAME_NAME(L_GAME_NAME), PKG_DOMINOS_USERS.GET_USER_BY_USER_EMAIL(L_USER3_SIDOROV)));
   END LOOP;
-  DBMS_OUTPUT.PUT_LINE('--------------------------------------------------------------------------');
+  DBMS_OUTPUT.PUT_LINE('--------------------------3------------------------------------------------');
   FOR I IN 1 .. 7
   LOOP
     PKG_DOMINOS_GAME_USER_DOMINOS.INSERT_GAME_USER_DOMINOS(GAME_ATTENDEE_ID_IN => 
